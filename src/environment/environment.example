@@ -1,0 +1,11 @@
+export const environment = {
+    // api_url: "https://xpgrowth-api.xpelise.fr"
+    api_url: "http://localhost:9000",
+    // api_url: "https://cricket-api.efito.xyz",
+    
+    
+    
+
+
+
+};
