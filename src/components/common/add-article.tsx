@@ -3,7 +3,7 @@ import "../vendors/styles/admin.css";
 import NavBar from "./NavBar";
 
 
-const AdminPage: React.FC = () => {
+const AddArticle: React.FC = () => {
   return (
     <>
     <NavBar />
@@ -29,4 +29,4 @@ const AdminPage: React.FC = () => {
   );
 };
 
-export default AdminPage;
+export default AddArticle;

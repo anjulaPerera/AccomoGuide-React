@@ -8,7 +8,6 @@ import { User } from "../../models/User";
 import { AuthService } from "../../services/AuthService";
 import { RouteName } from "../../RouteName";
 import "../vendors/styles/core.css";
-import "../vendors/styles/style.css";
 import "../vendors/styles/icon-font.css";
 import logo from "../../components/vendors/images/logo.svg";
 import { AdminService } from "../../services/AdminService";
@@ -29,7 +28,7 @@ const Auth: React.FC = ({ children }) => {
     } else {
       console.log("no token found");
       sessionStorage.clear();
-      window.location.href = "/student/test";
+      window.location.href = "/home";
     }
   }
 

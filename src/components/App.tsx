@@ -5,11 +5,7 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 import { RouteName } from "../RouteName";
 import Login from "./common/Login";
 import Auth from "./common/Auth";
-import NavBar from "./common/NavBar";
-import VerifyRole from "./common/VerifyRole";
-import { Role } from "../models/Role";
 import ContentLayout from "./common/ContentLayout";
-import SidePane from "./common/SidePane";
 import Content from "./common/Content";
 import { NotFound } from "./common/NotFound";
 import i18n from "i18next";
@@ -17,25 +13,16 @@ import { initReactI18next } from "react-i18next";
 import en from "../translations/locales/en.json";
 import fr from "../translations/locales/fr.json";
 import LanguageDetector from "i18next-browser-languagedetector";
-import AdminSideBar from "./Admin/AdminSideBar";
-import Footer from "./common/Footer";
-import UserManagement from "./Admin/UserManagement";
-import UserProfile from "./Admin/UserManagement/Profile";
 import SignUp from "./common/SignUp";
-import UpgradePlan from "./Admin/UserManagement/UpgradePlan";
-import MainDashboard2 from "./Admin/MainDashboard_new";
-import Feed from "./Admin/MainDashboard_new";
-import VerifyEmail from "./Admin/UserManagement/verify-email";
-import Profile from "./Admin/Personal/Profile";
 import Landing from "./common/LandingPage";
 import WardenPage from "./common/WardenPage";
 import StudentPage from "./common/StudentPage";
-import StudentTestPage from "./common/StudentTestPage";
 import LandlordPage from "./common/landlord";
 import AddPropertyPage from "./common/add-property";
 import StudentRequest from "./common/student-request";
 import PropertyManagement from "./common/property-management";
 import AdminPage from "./common/admin-account";
+import AddArticle from "./common/add-article";
 
 const languages = ["en", "fr"];
 
@@ -88,7 +75,7 @@ const App: React.FC = () => {
         </Route> */}
 
         <Route path="/">
-          {/* <Auth> */}
+          <Auth>
           <div className="page-container">
             <div className="content-wrap">
               <Router>
@@ -98,12 +85,18 @@ const App: React.FC = () => {
                   </Route>
                   <Route path="/accomo">
                     <LandlordRouter />
+                    <StudentRouter/>
+                    <WardenRouter/>
+
                   </Route>
+                  <Route path="*">
+              <NotFound />
+            </Route>
                 </Switch>
               </Router>
             </div>
           </div>
-          {/* </Auth> */}
+          </Auth>
         </Route>
       </Switch>
     </Router>
@@ -119,9 +112,7 @@ const WardenRouter: React.FC = () => {
             <Route path={RouteName.WARDEN_PAGE} exact>
               <WardenPage />
             </Route>
-            <Route path="*">
-              <NotFound />
-            </Route>
+         
           </Switch>
         </Content>
       </Router>
@@ -137,9 +128,7 @@ const StudentRouter: React.FC = () => {
             <Route path={RouteName.STUDENT_PAGE} exact>
               <StudentPage />
             </Route>
-            <Route path="*">
-              <NotFound />
-            </Route>
+         
           </Switch>
         </Content>
       </Router>
@@ -164,9 +153,7 @@ const LandlordRouter: React.FC = () => {
             <Route path={RouteName.PROPERTY_MANAGEMENT} exact>
               <PropertyManagement />
             </Route>
-            <Route path="*">
-              <NotFound />
-            </Route>
+         
           </Switch>
         </Content>
       </Router>
@@ -183,12 +170,10 @@ const AdminRouter: React.FC = () => {
             <Route path={RouteName.ADMIN_PAGE} exact>
               <AdminPage />
             </Route>
-            {/* <Route path={RouteName.ADD_ARTICLE_PAGE} exact>
-              <AddArticlePage />
-            </Route> */}
-            <Route path="*">
-              <NotFound />
+            <Route path={RouteName.ADD_ARTICLE_PAGE} exact>
+              <AddArticle />
             </Route>
+         
           </Switch>
         </Content>
       </Router>

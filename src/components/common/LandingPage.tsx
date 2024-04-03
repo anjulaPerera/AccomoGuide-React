@@ -4,7 +4,6 @@ import { AuthService } from "../../services/AuthService";
 import { RequestState } from "../../RequestState";
 import swal from "sweetalert";
 import { RouteName } from "../../RouteName";
-import "../vendors/styles/healthSpaceStyles.css";
 import "../vendors/styles/welcomepage.css";
 import loginImageLeft from "../../components/vendors/images/loginImageLeft.svg";
 import loginImageRight from "../../components/vendors/images/loginImageRight.jpg";

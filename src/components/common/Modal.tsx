@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
-import "../vendors/styles/healthSpaceStyles.css";
+// import "../vendors/styles/healthSpaceStyles.css";
 import Close from "../vendors/images/icon/x.png";
 
 interface ModalProps {

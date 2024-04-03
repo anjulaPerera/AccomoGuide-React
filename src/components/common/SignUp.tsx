@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, NavLink } from "react-router-dom";
 import { PublicService } from "../../services/PublicService";
 import { RouteName } from "../../RouteName";
-import "../vendors/styles/healthSpaceStyles.css";
+// import "../vendors/styles/healthSpaceStyles.css";
 import loginImageLeft from "../../components/vendors/images/loginImageLeft.svg";
 import loginImageRight from "../../components/vendors/images/loginImageRight.jpg";
 import rightBg from "../../components/vendors/images/right-bg.jpg";
