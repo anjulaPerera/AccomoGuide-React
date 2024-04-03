@@ -1,6 +1,7 @@
 import React from "react";
 import "../vendors/styles/student.css";
 import NavBar from "./NavBar";
+import home from "../vendors/images/home.jpg";
 
 
 const StudentPage: React.FC = () => {
@@ -10,18 +11,13 @@ const StudentPage: React.FC = () => {
     <header>
         <h1>Welcome to NSBM Green University Accommodation</h1>
     </header>
-    <nav>
-        <ul>
-            <li><a href="students_page">Home</a></li>
-            <li><a href="all_post">All Posts</a></li>
-        </ul>
-    </nav>
+    
     <div className="container">
         <h2>Advertisements</h2>
         <div className="advertisements">
             
             <div className="advertisement-card">
-                <img src="../vendors/images/home.jpg" alt="Property 1"></img>
+            <img className="property-img" src={home} alt="Property 1"/>
                 <div className="details">
                     <h3>Property Title</h3>
                     <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -31,7 +27,7 @@ const StudentPage: React.FC = () => {
                 </div>
             </div>
 			<div className="advertisement-card">
-                <img src="../vendors/images/home.jpg" alt="Property 1"></img>
+            <img className="property-img" src={home} alt="Property 1"/>
                 <div className="details">
                     <h3>Property Title</h3>
                     <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -41,7 +37,7 @@ const StudentPage: React.FC = () => {
                 </div>
             </div>
 			<div className="advertisement-card">
-                <img src="img/1.jpg" alt="Property 1"></img>
+            <img className="property-img" src={home} alt="Property 1"/>
                 <div className="details">
                     <h3>Property Title</h3>
                     <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

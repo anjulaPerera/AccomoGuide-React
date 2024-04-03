@@ -9,9 +9,13 @@ export enum RouteName {
   ADMIN_MAIN_DASHBOARD = "/hs/home",
   ADMIN_PROFILE= "/hs/profile/:userId?",
   HOME = "/home",
-  WARDEN_PAGE = "/warden-page",
-  STUDENT_PAGE = "/student-page",
-  STUDENT_TEST_PAGE = "/student/test"
+  WARDEN_PAGE = "/accomo/warden-page",
+  STUDENT_PAGE = "/accomo/student-page",
+  LANDLORD_PAGE = "/accomo/landlord/dashboard",
+  ADD_PROPERTY_PAGE = "/accomo/landlord/add-property",
+  STUDENT_REQUEST = "/accomo/landlord/student-request",
+  PROPERTY_MANAGEMENT = "/accomo/landlord/property-management",
+  ADMIN_PAGE = "/admin/admin-page", 
 
 
 }

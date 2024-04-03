@@ -56,7 +56,7 @@ const NavBar: React.FC = () => {
   return (
     <>
       <header className="navBar">
-        <a className="logo" href="/">
+        <a className="logo" href="/home">
           {<img src={a} alt="Logo" className="logo" />}
         </a>
         <nav>

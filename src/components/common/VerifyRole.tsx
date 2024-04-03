@@ -15,17 +15,18 @@ const VerifyRole: React.FC<VerifyRoleProps> = ({ allow, children }) => {
     return <div></div>;
   } else {
     switch (role) {
-      case Role.SUPER_ADMIN:
-        if (allow && allow.includes(Role.SUPER_ADMIN)) {
+      case Role.WEB_MASTER:
+        if (allow && allow.includes(Role.WEB_MASTER)) {
           return <>{children}</>;
         } else {
           return <></>;
         }
-      case Role.RECEIVER:
-      case Role.DONOR:
+      case Role.STUDENT:
+      case Role.WARDEN:
+      case Role.LANDLORD:
         if (
           allow &&
-          (allow.includes(Role.RECEIVER) || allow.includes(Role.DONOR))
+          (allow.includes(Role.STUDENT) || allow.includes(Role.WARDEN) || allow.includes(Role.LANDLORD))
         ) {
           return <>{children}</>;
         } else {

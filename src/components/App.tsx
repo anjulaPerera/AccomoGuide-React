@@ -31,6 +31,11 @@ import Landing from "./common/LandingPage";
 import WardenPage from "./common/WardenPage";
 import StudentPage from "./common/StudentPage";
 import StudentTestPage from "./common/StudentTestPage";
+import LandlordPage from "./common/landlord";
+import AddPropertyPage from "./common/add-property";
+import StudentRequest from "./common/student-request";
+import PropertyManagement from "./common/property-management";
+import AdminPage from "./common/admin-account";
 
 const languages = ["en", "fr"];
 
@@ -69,97 +74,42 @@ const App: React.FC = () => {
           <Landing />
         </Route>
         {/* ============================================================== */}
-        <Route path={RouteName.WARDEN_PAGE}>
+        {/* <Route path={RouteName.WARDEN_PAGE}>
           <WardenRouter />
         </Route>
         <Route path={RouteName.STUDENT_PAGE}>
           <StudentRouter />
         </Route>
-
-        {/* <Route path="/">
-          <Auth>
-            <div className="page-container">
-              <div className="content-wrap">
-                <Router>
-                  <Switch>
-                    <Route path="/admin">
-                      <VerifyRole allow={[Role.SUPER_ADMIN]}>
-                        <SuperAdminRouter />
-                      </VerifyRole>
-                    </Route>
-                    <Route path="/hs">
-                      <VerifyRole allow={[Role.RECEIVER]}>
-                        <PatientRouter />
-                      </VerifyRole>
-                    </Route>
-                  </Switch>
-                </Router>
-              </div>
-            </div>
-          </Auth>
+        <Route>
+          <LandlordRouter />
+        </Route>
+        <Route path={RouteName.ADMIN_PAGE}>
+          <AdminRouter />
         </Route> */}
+
+        <Route path="/">
+          {/* <Auth> */}
+          <div className="page-container">
+            <div className="content-wrap">
+              <Router>
+                <Switch>
+                  <Route path="/admin">
+                    <AdminRouter />
+                  </Route>
+                  <Route path="/accomo">
+                    <LandlordRouter />
+                  </Route>
+                </Switch>
+              </Router>
+            </div>
+          </div>
+          {/* </Auth> */}
+        </Route>
       </Switch>
     </Router>
   );
 };
 
-// const SuperAdminRouter: React.FC = () => {
-//   return (
-//     <ContentLayout>
-//       <Router>
-//         <Route
-//           path={[RouteName.ADMIN_USER_MANAGEMENT]}
-//           exact
-//           render={() => (
-//             <>
-//               <NavBar />
-//               <SidePane>
-//                 <AdminSideBar />
-//               </SidePane>
-//             </>
-//           )}
-//         />
-//         <Content>
-//           <Switch>
-//             <Route path={RouteName.ADMIN_USER_MANAGEMENT}>
-//               <UserManagement />
-//             </Route>
-
-//             <Route path="*">
-//               <NotFound />
-//             </Route>
-//           </Switch>
-//         </Content>
-//       </Router>
-//     </ContentLayout>
-//   );
-// };
-
-// const PatientRouter: React.FC = () => {
-//   return (
-//     <ContentLayout>
-//       <Router>
-//         <Route>
-//           <NavBar />
-//         </Route>
-//         <Content>
-//           <Switch>
-//             <Route path={RouteName.ADMIN_MAIN_DASHBOARD} exact>
-//               <MainDashboard2 />
-//             </Route>
-//             <Route path={RouteName.ADMIN_PROFILE} exact>
-//               <Profile />
-//             </Route>
-
-//             <Route path="*">
-//               <NotFound />
-//             </Route>
-//           </Switch>
-//         </Content>
-//       </Router>
-//     </ContentLayout>
-//   );
-// };
 const WardenRouter: React.FC = () => {
   return (
     <ContentLayout>
@@ -187,9 +137,55 @@ const StudentRouter: React.FC = () => {
             <Route path={RouteName.STUDENT_PAGE} exact>
               <StudentPage />
             </Route>
-            <Route path={RouteName.STUDENT_TEST_PAGE} exact>
-              <StudentTestPage />
+            <Route path="*">
+              <NotFound />
             </Route>
+          </Switch>
+        </Content>
+      </Router>
+    </ContentLayout>
+  );
+};
+const LandlordRouter: React.FC = () => {
+  return (
+    <ContentLayout>
+      <Router>
+        <Content>
+          <Switch>
+            <Route path={RouteName.LANDLORD_PAGE} exact>
+              <LandlordPage />
+            </Route>
+            <Route path={RouteName.ADD_PROPERTY_PAGE} exact>
+              <AddPropertyPage />
+            </Route>
+            <Route path={RouteName.STUDENT_REQUEST} exact>
+              <StudentRequest />
+            </Route>
+            <Route path={RouteName.PROPERTY_MANAGEMENT} exact>
+              <PropertyManagement />
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+        </Content>
+      </Router>
+    </ContentLayout>
+  );
+};
+
+const AdminRouter: React.FC = () => {
+  return (
+    <ContentLayout>
+      <Router>
+        <Content>
+          <Switch>
+            <Route path={RouteName.ADMIN_PAGE} exact>
+              <AdminPage />
+            </Route>
+            {/* <Route path={RouteName.ADD_ARTICLE_PAGE} exact>
+              <AddArticlePage />
+            </Route> */}
             <Route path="*">
               <NotFound />
             </Route>
