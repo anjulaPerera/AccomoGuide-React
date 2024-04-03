@@ -17,8 +17,9 @@ body {
 }
 
 h2 {
-    color: #333;
+    color: #d60000;
     text-align: center;
+    text-emphasis: none;
 }
 
 form {
@@ -54,13 +55,13 @@ button:hover {
     background-color: #007acc;
 }
 
-#logo {
+.logo {
     width: 50px;
     height: 50px;
     margin-bottom: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .login-button {

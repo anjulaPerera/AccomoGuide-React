@@ -40,7 +40,7 @@ const Landing: React.FC = () => {
           <br></br>
 
           <a href="/login">Get Start</a>
-          <a href="landlord_registration">Landlord</a>
+          <a href="/landlord_registration">Landlord</a>
         </div>
       </div>
     </>

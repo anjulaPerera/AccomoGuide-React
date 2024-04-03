@@ -14,8 +14,8 @@ import {
   faRightFromBracket,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import logo_png from "../../components/vendors/images/logo-png.png";
 import Dp from "../vendors/images/photo4.jpg";
+import a from "../vendors/images/a.jpg"
 
 const NavBar: React.FC = () => {
   useEffect(() => {
@@ -55,37 +55,27 @@ const NavBar: React.FC = () => {
 
   return (
     <>
-      <header>
+      <header className="navBar">
         <a className="logo" href="/">
-          {/* <img src={logo_png} alt="Logo" className="logo" /> */}
+          {<img src={a} alt="Logo" className="logo" />}
         </a>
         <nav>
-          <ul className="nav__links">
-            <li>
-              <a href="#">Artical</a>
-            </li>
-            <li>
-              <a href="#"></a>
-            </li>
-            <li>
-              <a href="#">About</a>
-            </li>
-          </ul>
-        </nav>
-        <a className="cta" href="#">
-          Contact
-        </a>
-        <p className="menu cta">Menu</p>
-      </header>
-      <div id="mobile__menu" className="overlay">
-        <a className="close">&times;</a>
-        <div className="overlay__content">
-          <a href="#">Services</a>
-          <a href="#">Projects</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
+                <ul className="nav__links">
+                    <li><a href="#">Articles</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <a className="cta" href="#">Contact</a>
+            <p className="menu cta">Menu</p>
+        </header>
+        <div id="mobile__menu" className="overlay">
+            <a className="close">&times;</a>
+            <div className="overlay__content">
+                <a href="#">Articles</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
         </div>
-      </div>
     </>
   );
 };

@@ -72,7 +72,7 @@ const App: React.FC = () => {
         <Route path={RouteName.WARDEN_PAGE}>
           <WardenRouter />
         </Route>
-        <Route>
+        <Route path={RouteName.STUDENT_PAGE}>
           <StudentRouter />
         </Route>
 

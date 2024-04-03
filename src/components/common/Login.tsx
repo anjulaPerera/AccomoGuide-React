@@ -20,6 +20,7 @@ import { AdminService } from "../../services/AdminService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import rightBg from "../../components/vendors/images/right-bg.jpg";
+import a from "../vendors/images/a.jpg"
 
 const Login: React.FC = () => {
   const token = AuthService.getToken();
@@ -138,23 +139,17 @@ const Login: React.FC = () => {
   return (
     <>
       <div className="register-container">
-        <img src="/img/a.jpg" alt="Logo" id="logo"></img>
+      <a className="logo" href="/">
+          {<img src={a} alt="Logo" className="logo" />}
+        </a>
+
         <h2>LogIn</h2>
 
-        <form action="register_process.php" method="POST">
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            required
-          ></input>
+        <form action="register_process" method="POST">
+          <input type="text"name="username"
+            placeholder="Username"required></input>
           <br></br>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-          ></input>
+          <input type="password" name="password" placeholder="Password" required></input>
           <br></br>
           <select name="role" required>
             <option value="">Select Role</option>

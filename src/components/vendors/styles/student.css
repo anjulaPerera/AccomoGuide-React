@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    color: #000000;
+    padding: 20px;
+    text-align: center;
+    
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36pt;
+    }
+
+
+.home {
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #000000;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+    right: auto;
+}
+
+.advertisements {
+    margin-top: 20px;
+}
+
+.advertisement-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.advertisement-card img {
+    width: 200px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.details {
+    flex-grow: 1;
+}
+
+.details h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+a.details-btn,
+a.reserve-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+}
+
+a.details-btn {
+    background-color: #007bff;
+}
+
+a.reserve-btn {
+    background-color: #28a745;
+}
+
+a.details-btn:hover,
+a.reserve-btn:hover {
+    opacity: 0.8;
+}
