@@ -1,25 +1,37 @@
-* {
+/* * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     
-  }
-  
-  header {
+  } */
+
+  .navBar{
+    padding: 10px 0 0 0;
+    width: 100vw;
     display: flex;
-    justify-content: flex-end;
-    padding: 30px 10%;
-    margin-top: 100px;
-
-
+    align-items: center;
+  }
+  .left-side{
+    flex:3;
+    display: flex;
+    justify-content: left;
+  }
+  .left-side a{
+    text-align: left;
+  }
+  .right-side{
+    flex:1;
+    display: flex;
+    
   }
   
-.logo {
-    width: 50px;
-    margin-right: 60rem;
+.logo-nav {
+    width: 100px;
+    margin-left:25px;
+    /* margin-right: 60rem; */
   }
 
-.logo :hover{
+.logo-nav :hover{
       transform: scale(1.1);
   }
     
@@ -27,6 +39,19 @@
 .nav__links {
     list-style: none;
     display: flex;
+  }
+  .article-btn a, .about-btn a, .contact-btn a{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    color: #000000;
+    text-decoration: none;
+   
+  }
+  .article-btn a{
+    padding-right:20px;
+  }
+  .about-btn a{
+    padding-right:10px;
   }
   
   .nav__links a,
@@ -52,7 +77,7 @@
   
   .cta {
     margin-left: 20px;
-    padding: 15px 20px;
+    padding: 10px 15px 10px 15px;
     background-color: #86A789;
     border: none;
     border-radius: 50px;

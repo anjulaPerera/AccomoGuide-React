@@ -23,6 +23,7 @@ import StudentRequest from "./common/student-request";
 import PropertyManagement from "./common/property-management";
 import AdminPage from "./common/admin-account";
 import AddArticle from "./common/add-article";
+import LandlordRegistration from "./common/Registration";
 
 const languages = ["en", "fr"];
 
@@ -54,8 +55,11 @@ const App: React.FC = () => {
         <Route path={RouteName.LOGIN}>
           <Login />
         </Route>
-        <Route path={RouteName.SIGNUP}>
+        {/* <Route path={RouteName.SIGNUP}>
           <SignUp />
+        </Route> */}
+        <Route path={RouteName.SIGNUP}>
+          <LandlordRegistration/>
         </Route>
         <Route path={RouteName.HOME}>
           <Landing />
@@ -75,7 +79,7 @@ const App: React.FC = () => {
         </Route> */}
 
         <Route path="/">
-          <Auth>
+          {/* <Auth> */}
           <div className="page-container">
             <div className="content-wrap">
               <Router>
@@ -96,7 +100,7 @@ const App: React.FC = () => {
               </Router>
             </div>
           </div>
-          </Auth>
+          {/* </Auth> */}
         </Route>
       </Switch>
     </Router>

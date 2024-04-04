@@ -37,4 +37,8 @@ export class AdminService {
     const url = Util.apiAuthUrl(`get/user/${userId}`);
     return await axios.get<User, AppResponse<User>>(url);
   }
+  public static async registerAUserByWebMaster(data: Partial<any>): Promise<AppResponse<any>> {
+    const url = Util.apiAuthUrl("signup/accounts");
+    return await axios.post<Partial<any>, AppResponse<any>>(url, data);
+  }
 }

@@ -10,18 +10,23 @@ export interface UserLoginData {
 
 export interface LoginResponse {
   token: string;
+  userType:string;
 }
 
 export class AuthService {
   private static readonly TOKEN_KEY = "token";
 
   public static async getMe(): Promise<AppResponse<any>> {
+    // console.log("inside get me")
     const ep = Util.apiAuthUrl("get/user");
+    console.log("Auth Service Get me", ep)
 
     const res = await axios.get<
       void,
       AppResponse<any>
     >(ep);
+
+    console.log("get me response",res)
 
     if (res.error) {
       localStorage.removeItem(AuthService.TOKEN_KEY);
@@ -34,6 +39,7 @@ export class AuthService {
     userLoginData: UserLoginData
   ): Promise<AppResponse<LoginResponse>> {
     const ep = Util.apiPublicUrl("login");
+    console.log("inside auth service user login")
 
     const res = await axios.post<UserLoginData, AppResponse<LoginResponse>>(
       ep,

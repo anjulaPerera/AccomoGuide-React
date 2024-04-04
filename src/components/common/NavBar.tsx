@@ -53,9 +53,13 @@ const NavBar: React.FC = () => {
     };
   }, []);
 
+  function RedirectTo(){
+    window.location.href = "/home"
+  }
+
   return (
     <>
-      <header className="navBar">
+      {/* <div className="navBar">
         <a className="logo" href="/home">
           {<img src={a} alt="Logo" className="logo" />}
         </a>
@@ -67,15 +71,34 @@ const NavBar: React.FC = () => {
             </nav>
             <a className="cta" href="#">Contact</a>
             <p className="menu cta">Menu</p>
-        </header>
-        <div id="mobile__menu" className="overlay">
+        </div> */}
+
+        <div className="navBar">
+          <div className="left-side" onClick={RedirectTo}>
+      
+          {<img src={a} alt="Logo" className="logo-nav" />}
+       
+          </div>
+          <div className="right-side">
+            <div className="article-btn">
+              <a href="">Articles</a>
+            </div>
+            <div className="about-btn">
+            <a href="">About</a>
+            </div>
+            <div className="contact-btn">
+            <a href="" className="cta">Contact</a>
+            </div>
+          </div>
+        </div>
+        {/* <div id="mobile__menu" className="overlay">
             <a className="close">&times;</a>
             <div className="overlay__content">
                 <a href="#">Articles</a>
                 <a href="#">About</a>
                 <a href="#">Contact</a>
             </div>
-        </div>
+        </div> */}
     </>
   );
 };

@@ -375,11 +375,7 @@ const SignUp: React.FC = () => {
                       {currentStep === 1 && (
                         <>
                           <div className="textbox2 mb-3 mt-5">
-                            {/* <img
-                              src={userIconLogin}
-                              alt="Input Icon"
-                              className="input-icon"
-                            /> */}
+            
                             <FontAwesomeIcon
                               icon={faUser}
                               className="input-icon"

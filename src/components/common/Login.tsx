@@ -4,7 +4,7 @@ import { AuthService } from "../../services/AuthService";
 import { RequestState } from "../../RequestState";
 // import swal from "sweetalert";
 import { RouteName } from "../../RouteName";
-import "../vendors/styles/login.css";
+// import "../vendors/styles/login.css";
 import loginImageLeft from "../../components/vendors/images/loginImageLeft.svg";
 import loginImageRight from "../../components/vendors/images/loginImageRight.jpg";
 import loginCardImage from "../../components/vendors/images/loginCardImage.svg";
@@ -21,6 +21,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import rightBg from "../../components/vendors/images/right-bg.jpg";
 import a from "../vendors/images/a.jpg"
+import swal from "sweetalert";
 
 const Login: React.FC = () => {
   const token = AuthService.getToken();
@@ -51,19 +52,47 @@ const Login: React.FC = () => {
       AuthService.userLogin(userData)
         .then(async (res) => {
           if (res.success) {
+            console.log("user data checking", res)
             AuthService.setToken(res.data.token);
+            console.log("token set, user login successful")
             setLoginRequestState(RequestState.SUCCESS);
+            swal({
+              title: "Login Successful",
+          
+              icon: "success",
+            }).then(() => {
+              // window.location.href = "/login";
+              verifyUser();
+              // if(res.data.userType === "WEB_MASTER"){
+              //   history.push(RouteName.ADMIN_PAGE);
+              // }
+              // else if(res.data.userType === "STUDENT"){
+              //   history.push(RouteName.STUDENT_PAGE);
+              // }
+              // else if(res.data.userType === "WARDEN"){
+              //   history.push(RouteName.WARDEN_PAGE);
+              // }
+              // else if(res.data.userType === "LANDLORD"){
+              //   history.push(RouteName.LANDLORD_PAGE);
+              // }
+              // else{
+              //   history.push("*");
+              // }
+            })
           } else {
+            console.log("user login failed",res.error)
             setError(res.error);
             setLoginRequestState(RequestState.FAILED);
           }
         })
         .catch((e) => {
+          console.log("user login failed",e)
+
           setError(e);
           setLoginRequestState(RequestState.FAILED);
         });
     } else if (loginRequestState === RequestState.FAILED) {
-      // swal({ title: "User login fail!", icon: "error" });
+      swal({ title: "User login fail!", icon: "error" });
     }
     // else if (loginRequestState === RequestState.SUCCESS) {
     //   if (token || loginRequestState === RequestState.SUCCESS) {
@@ -92,28 +121,36 @@ const Login: React.FC = () => {
   };
 
   const verifyUser = async () => {
+    console.log("inside verify user");
     try {
       const res = await AuthService.getMe();
+      console.log("res verify user", res);
       if (res.success) {
-        const { userType, userStatus, isVerified, _id } = res.data;
+        const { userType, userStatus, _id } = res.data;
         console.log("userType", userType);
         if (userStatus === "ACTIVE") {
           switch (userType) {
-            case "SUPER_ADMIN":
-              history.push(RouteName.ADMIN_USER_MANAGEMENT);
+            case "WEB_MASTER":
+              history.push(RouteName.ADMIN_PAGE);
               break;
-            case "RECEIVER":
-            case "DONOR":
-              history.push(RouteName.ADMIN_MAIN_DASHBOARD);
+            
+            case "STUDENT":
+              history.push(RouteName.STUDENT_PAGE);
               break;
+              case "WARDEN":
+                history.push(RouteName.WARDEN_PAGE);
+                break;
+                case "LANDLORD":
+                history.push(RouteName.LANDLORD_PAGE);
+                break;
             default:
               break;
           }
         } else {
-          if (!isVerified) {
-            sessionStorage.clear();
-            // swal({ icon: "error", title: "User not verified yet!" });
-          }
+          // if (!isVerified) {
+          //   sessionStorage.clear();
+          //   // swal({ icon: "error", title: "User not verified yet!" });
+          // }
         }
       } else {
         sessionStorage.clear();
@@ -124,9 +161,9 @@ const Login: React.FC = () => {
     }
   };
 
-  if (token || loginRequestState === RequestState.SUCCESS) {
-    verifyUser();
-  }
+  // if (token || loginRequestState === RequestState.SUCCESS) {
+  //   verifyUser();
+  // }
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -145,27 +182,20 @@ const Login: React.FC = () => {
 
         <h2>LogIn</h2>
 
-        <form action="register_process" method="POST">
-          <input type="text"name="username"
-            placeholder="Username"required></input>
+        <form onSubmit={submitLogin}>
+          <input type="text" name="email"
+            placeholder="Email"required></input>
           <br></br>
           <input type="password" name="password" placeholder="Password" required></input>
-          <br></br>
-          <select name="role" required>
-            <option value="">Select Role</option>
-            <option value="landlord">Landlord</option>
-            <option value="warden">Warden</option>
-            <option value="student">Student</option>
-            <option value="admin">Admin</option>
-          </select>
-          <br></br>
+          <button type="submit">LOGIN</button>
+
+         
         </form>
 
-        <div className="login-button">
+        {/* <div className="login-button">
           <form>
-            <button type="submit">LOGIN</button>
           </form>
-        </div>
+        </div> */}
       </div>
     </>
   );

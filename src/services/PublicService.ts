@@ -6,9 +6,10 @@ import { User } from "../models/User";
 export class PublicService {
 
   public static async signUp(data: Partial<any>): Promise<AppResponse<any>> {
-    const url = Util.apiPublicUrl("signup");
+    const url = Util.apiPublicUrl("signup/landlord");
     return await axios.post<Partial<any>, AppResponse<any>>(url, data);
   }
+
   public static async verifyOtp(data: Partial<any>): Promise<AppResponse<any>> {
     const url = Util.apiPublicUrl("verify-otp");
     return await axios.post<Partial<any>, AppResponse<any>>(url, data);
