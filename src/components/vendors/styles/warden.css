@@ -1,32 +1,79 @@
-  .advertisements {
-    display: flex;
-    flex-wrap: wrap;
-    font-weight: 8;
-  }
+.ad-container{
+  text-align: center;
+  width:80%;
+  height:auto;
+  padding:10px;
+  border-radius:15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin:20px 0 0 150px;
+}
   
-  .advertisement-card {
-    margin: 10px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 400px;
-  }
-  
-  .property-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 8px;
-  }
-  
-  .details {
-    margin-top: 15px;
-    font: optional;
-    padding: 2px;
-  }
-  
-  
+.ads-wrapper{
+  width:inherit;
+  height:auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.ad-card{
+  width:inherit;
+  height: auto;
+  padding:30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom:10px;
+  border: 1px solid #cfcfcf;
+  border-radius:10px
+}
+
+.ad-left{
+  flex:1;
+  height:auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.ad-right{
+  flex:1;
+  height:auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.ad-img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:5px;
+}
+
+.ad-img img{
+  width:310px !important;
+  height: 200px !important;
+  border-radius: 10px;
+}
+
+.ad-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+
   p {
     margin: 5px 0;
   }

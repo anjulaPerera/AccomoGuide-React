@@ -16,6 +16,16 @@
     align-items: flex-end;
     height: auto !important;
 } */
+.rej-btn{
+    background-color: rgb(205, 68, 68);
+}
+
+.request-card{
+    margin-bottom: 15px;
+    border: 1px solid #eeeded;
+    border-radius: 5px;
+    padding: 15px;
+}
 
 .landin-btn{
     display: flex;

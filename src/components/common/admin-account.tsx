@@ -38,7 +38,7 @@ const AdminPage: React.FC = () => {
         console.log("inside res.success");
         swal({
           title: "Successful",
-          text: "Landlord Registered Successfully! Please Login.",
+          text: `${formData.userType} Registered Successfully! Please Login.`,
           icon: "success",
         }).then(() => {
           window.location.href = "/admin/dashboard";
@@ -76,9 +76,9 @@ const AdminPage: React.FC = () => {
         <form onSubmit={handleSignUp}>
             <label >Select User Type:</label>
             <select id="userType" name="userType"  value={formData.userType} onChange={handleInputChange}>
-                <option value="landlord">Landlord</option>
-                <option value="warden">Warden</option>
-                <option value="student">Student</option>
+                <option value="LANDLORD">Landlord</option>
+                <option value="WARDEN">Warden</option>
+                <option value="STUDENT">Student</option>
             </select>
             <label >Username:</label>
             <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required></input>

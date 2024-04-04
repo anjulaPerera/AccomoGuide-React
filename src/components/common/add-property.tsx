@@ -25,11 +25,7 @@ const AddPropertyPage: React.FC = () => {
     console.log("Longitude:", e?.latLng?.lng());
   };
 
-  useEffect(() => {
-    console.log("position picked", position)
-  },[position])
 
-  console.log("logged in user", user)
  
     
   const handleCreatePost = async (event: React.FormEvent<HTMLFormElement>) => {

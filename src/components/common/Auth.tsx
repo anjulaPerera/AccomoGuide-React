@@ -9,7 +9,7 @@ import { AuthService } from "../../services/AuthService";
 import { RouteName } from "../../RouteName";
 import "../vendors/styles/core.css";
 import "../vendors/styles/icon-font.css";
-import logo from "../../components/vendors/images/logo.svg";
+import logo from "../../components/vendors/images/a.jpg";
 import { AdminService } from "../../services/AdminService";
 
 const Auth: React.FC = ({ children }) => {
@@ -44,6 +44,9 @@ const Auth: React.FC = ({ children }) => {
  
             if (res.data?.userStatus === "ACTIVE") {
               setUserRequestState(RequestState.SUCCESS);
+              if(res.data?.userType === "WARDEN"){
+                history.push(RouteName.WARDEN_PAGE);
+              }
             }
           } else {
             setUserRequestState(RequestState.FAILED);
@@ -76,9 +79,7 @@ const Auth: React.FC = ({ children }) => {
       return (
         <div className="pre-loader">
           <div className="pre-loader-box">
-            <div className="loader-logo">
-              <img src={logo} alt="circView360-logo" />
-            </div>
+       
             <div className="loader-progress" id="progress_div">
               <div className="bar" id="bar1"></div>
             </div>

@@ -114,18 +114,27 @@ const Login: React.FC = () => {
         if (userStatus === "ACTIVE") {
           switch (userType) {
             case "WEB_MASTER":
-              history.push(RouteName.ADMIN_PAGE);
+              
+              swal({ title: "User login successful!", icon: "success" }).then(
+                () => history.push(RouteName.ADMIN_PAGE)
+              );
 
               break;
               case "STUDENT":
-              history.push(RouteName.STUDENT_PAGE);
+              swal({ title: "User login successful!", icon: "success" }).then(
+                () => history.push(RouteName.STUDENT_PAGE)
+              );
               break;
 
               case "WARDEN":
-                history.push(RouteName.WARDEN_PAGE);
+                swal({ title: "User login successful!", icon: "success" }).then(
+                  () => history.push(RouteName.WARDEN_PAGE)
+                );
                 break;
                 case "LANDLORD":
-                history.push(RouteName.LANDLORD_PAGE);
+                swal({ title: "User login successful!", icon: "success" }).then(
+                  () => history.push(RouteName.LANDLORD_PAGE)
+                );
                 break;
 
             default:
@@ -162,8 +171,8 @@ const Login: React.FC = () => {
   return (
     <>
       <div className="register-container">
-        <a className="logo" href="/">
-          {<img src={a} alt="Logo" className="logo" />}
+        <a className="loginlogo" href="/">
+          {<img src={a} alt="Logo" className="login-logo" />}
         </a>
 
         <h2>LogIn</h2>
