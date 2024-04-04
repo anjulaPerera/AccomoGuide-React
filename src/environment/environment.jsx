@@ -3,7 +3,7 @@ export const environment = {
     api_url: "http://localhost:9000",
     // api_url: "https://cricket-api.efito.xyz",
     
-    GOOGLE_MAP_API_KEY: "ksdjdsjfj"
+    GOOGLE_MAP_API_KEY: "AIzaSyAcp672bL5-xeEVYyk8imJ_pT65mVZKKGE"
     
 
 

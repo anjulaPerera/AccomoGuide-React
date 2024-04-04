@@ -28,6 +28,7 @@
 .logo-nav {
     width: 100px;
     margin-left:25px;
+    cursor: pointer;
     /* margin-right: 60rem; */
   }
 

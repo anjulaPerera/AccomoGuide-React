@@ -9,6 +9,11 @@ export class PublicService {
     const url = Util.apiPublicUrl("signup/landlord");
     return await axios.post<Partial<any>, AppResponse<any>>(url, data);
   }
+  public static async createPost(data: Partial<any>, userId: string): Promise<AppResponse<any>> {
+    const url = Util.apiAuthUrl(`create/landlord/post/${userId}`);
+    console.log("url", url);  
+    return await axios.post<Partial<any>, AppResponse<any>>(url, data);
+  }
 
   public static async verifyOtp(data: Partial<any>): Promise<AppResponse<any>> {
     const url = Util.apiPublicUrl("verify-otp");

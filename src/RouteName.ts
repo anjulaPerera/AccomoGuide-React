@@ -12,6 +12,7 @@ export enum RouteName {
   ADD_PROPERTY_PAGE = "/accomo/landlord/add-property",
   STUDENT_REQUEST = "/accomo/landlord/student-request",
   PROPERTY_MANAGEMENT = "/accomo/landlord/property-management",
+  ARTICLE_PAGE = "/accomo/article",
 
   //admin routes
   ADMIN_PAGE = "/admin/dashboard", 

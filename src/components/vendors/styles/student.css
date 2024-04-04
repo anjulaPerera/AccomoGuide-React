@@ -3,14 +3,19 @@ header {
     padding: 2px;
     padding-top: 0.5rem;
     padding-bottom: 60px;
+    align-items: center;
 }
-
-h1 {
-    font-size: 2.5rem;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    color: #ffffff;
+h1{
+    font-size: 40px;
+    font-weight: 600;
+}
+.s-tag{
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    font-weight: 800;
+    padding-left: 500px;
+    padding-right: 0px;
 }
 
 .home {
@@ -32,23 +37,22 @@ h2 {
     right: auto;
 }
 
-h2 {
-    color: #333;
-    right: auto;
-}
-
 .advertisements {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
     margin-top: 20px;
     align-items: center;
+    justify-content: center;
 }
 
-.advertisement-card {
+/* .advertisement-card {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 20px;
     display: flex;
-}
+} */
 
 .advertisement-card img {
     width: 200px;
@@ -68,10 +72,11 @@ h2 {
 a.details-btn,
 a.reserve-btn {
     display: inline-block;
-    padding: 5px 10px;
+    padding: 5px 15px;
     margin-right: 20px;
-    border-radius: 5px;
+    border-radius: 20px;
     text-decoration: none;
+    margin-bottom: 10px;
     color: #fff;
 }
 

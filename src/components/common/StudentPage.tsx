@@ -9,7 +9,9 @@ const StudentPage: React.FC = () => {
     <>
     <NavBar />
     <header>
+        <div className="s-tag">
         <h1>Welcome to NSBM Green University Accommodation</h1>
+        </div>
     </header>
     
     <div className="container">

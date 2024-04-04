@@ -24,6 +24,7 @@ import PropertyManagement from "./common/property-management";
 import AdminPage from "./common/admin-account";
 import AddArticle from "./common/add-article";
 import LandlordRegistration from "./common/Registration";
+import ArticlePage from "./common/article";
 
 const languages = ["en", "fr"];
 
@@ -79,7 +80,7 @@ const App: React.FC = () => {
         </Route> */}
 
         <Route path="/">
-          {/* <Auth> */}
+          <Auth>
           <div className="page-container">
             <div className="content-wrap">
               <Router>
@@ -91,6 +92,7 @@ const App: React.FC = () => {
                     <LandlordRouter />
                     <StudentRouter/>
                     <WardenRouter/>
+                    <ArticleRouter/>
 
                   </Route>
                   <Route path="*">
@@ -100,7 +102,7 @@ const App: React.FC = () => {
               </Router>
             </div>
           </div>
-          {/* </Auth> */}
+          </Auth>
         </Route>
       </Switch>
     </Router>
@@ -177,7 +179,21 @@ const AdminRouter: React.FC = () => {
             <Route path={RouteName.ADD_ARTICLE_PAGE} exact>
               <AddArticle />
             </Route>
-         
+          </Switch>
+        </Content>
+      </Router>
+    </ContentLayout>
+  );
+};
+const ArticleRouter: React.FC = () => {
+  return (
+    <ContentLayout>
+      <Router>
+        <Content>
+          <Switch>
+            <Route path={RouteName.ARTICLE_PAGE} exact>
+              <ArticlePage/>
+            </Route>
           </Switch>
         </Content>
       </Router>

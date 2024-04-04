@@ -16,6 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Dp from "../vendors/images/photo4.jpg";
 import a from "../vendors/images/a.jpg"
+import { AuthService } from "../../services/AuthService";
 
 const NavBar: React.FC = () => {
   useEffect(() => {
@@ -87,7 +88,7 @@ const NavBar: React.FC = () => {
             <a href="">About</a>
             </div>
             <div className="contact-btn">
-            <a href="" className="cta">Contact</a>
+            <div onClick={AuthService.userLogout}><a href="" className="cta">Logout</a></div>
             </div>
           </div>
         </div>
