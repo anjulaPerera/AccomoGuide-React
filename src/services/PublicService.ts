@@ -30,6 +30,10 @@ export class PublicService {
     const url = Util.apiPublicUrl("verify-otp");
     return await axios.post<Partial<any>, AppResponse<any>>(url, data);
   }
+  public static async getArticles(): Promise<AppResponse<any>> {
+    const url = Util.apiPublicUrl("get/articles");
+    return await axios.get<Partial<any>, AppResponse<any>>(url);
+  }
 
   public static async getLoggedInUser(): Promise<AppResponse<User>> {
     const url = Util.apiAuthUrl("get/user");

@@ -62,7 +62,7 @@ const LandlordRegistration: React.FC = () => {
         <a className="loginlogo" href="/">
           {<img src={a} alt="Logo" className="login-logo" />}
         </a>
-        <h2>LogIn</h2>
+        <h2>Register as a Landlord</h2>
         <form onSubmit={handleSignUp}>
             <input type="text" name="email" placeholder="Email" value={formData.email} onChange={handleInputChange} required></input><br></br>
             <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleInputChange} required></input><br></br>

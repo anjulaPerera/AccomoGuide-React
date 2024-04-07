@@ -73,4 +73,8 @@ export class AdminService {
     const url = Util.apiAuthUrl(`send/property/request/${studentId}/${postId}`);
     return await axios.post<Partial<any>, AppResponse<any>>(url);
   }
+  public static async createArticle(adminId:any, data:any): Promise<AppResponse<any>> {
+    const url = Util.apiAuthUrl(`create/article/${adminId}`);
+    return await axios.post<Partial<any>, AppResponse<any>>(url, data);
+  }
 }

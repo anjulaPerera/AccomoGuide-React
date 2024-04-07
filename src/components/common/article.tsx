@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../vendors/styles/article.css";
 import NavBar from "./NavBar";
-import home from "../vendors/images/home.jpg";
+import { PublicService } from "../../services/PublicService";
 
 
 const ArticlePage: React.FC = () => {
+  const [articles, setArticles] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+
+
+  const fetchArticles = async () => {
+    await PublicService.getArticles().then((res) => {
+      if(res.success){
+        setArticles(res.data);
+      }else{
+        console.error("Failed to fetch articles:", res.message);
+      }
+     })
+  }
+
+
   return (
     <>
     <NavBar />
@@ -17,35 +35,18 @@ const ArticlePage: React.FC = () => {
   <main>
     <div className="post-grid">
       
-      <div className="post-card">
-        <h2>Title</h2>
-        <p>Description or content</p>
-      </div>
+      {
+        articles.map((article, index) => (
+          <div className="post-card" key={index}>
+         
+            <div className="post-card-content">
+              <h2>{article.title}</h2>
+              <p>{article.content}</p>
+            </div>
+          </div>
+        ))
+      }
 
-      <div className="post-card">
-        <h2>Title</h2>
-        <p>Description or content</p>
-      </div>
-
-      <div className="post-card">
-        <h2>Title</h2>
-        <p>Description or content</p>
-      </div>
-
-      <div className="post-card">
-        <h2>Title</h2>
-        <p>Description or content</p>
-      </div>
-
-      <div className="post-card">
-        <h2>Title</h2>
-        <p>Description or content</p>
-      </div>
-
-      <div className="post-card">
-        <h2>Title</h2>
-        <p>Description or content</p>
-      </div>
       
     </div>
     </main>
