@@ -6,6 +6,7 @@ import swal from "sweetalert";
 import { RouteName } from "../../RouteName";
 import { LoginData } from "../../models/LoginModel";
 import a from "../vendors/images/a.jpg"
+import "../vendors/styles/login.css";
 
 const Login: React.FC = () => {
   const token = AuthService.getToken();

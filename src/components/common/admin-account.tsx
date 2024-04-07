@@ -68,8 +68,8 @@ const AdminPage: React.FC = () => {
     </header>
     <nav>
         <ul>
-            <li><a href="admin_create_account">Create Account</a></li>
-            <li><a href="share_article">Share Article</a></li>
+            <li><a href="/admin/dashboard">Create Account</a></li>
+            <li><a href="/admin/add-article">Share Article</a></li>
         </ul>
     </nav>
     <div className="container">

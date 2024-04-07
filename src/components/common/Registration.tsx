@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../vendors/styles/registration.css"
 import { PublicService } from "../../services/PublicService";
 import swal from "sweetalert";
+import a from "../vendors/images/a.jpg"
 
 const LandlordRegistration: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -58,7 +59,9 @@ const LandlordRegistration: React.FC = () => {
 
 
     <div className="register-container">
-        <img src="/img/a.jpg" alt="Logo" id="logo"/>
+        <a className="loginlogo" href="/">
+          {<img src={a} alt="Logo" className="login-logo" />}
+        </a>
         <h2>LogIn</h2>
         <form onSubmit={handleSignUp}>
             <input type="text" name="email" placeholder="Email" value={formData.email} onChange={handleInputChange} required></input><br></br>

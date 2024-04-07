@@ -82,7 +82,7 @@ const NavBar: React.FC = () => {
           </div>
           <div className="right-side">
             <div className="article-btn">
-              <a href="">Articles</a>
+              <a href="/accomo/article">Articles</a>
             </div>
             <div className="about-btn">
             <a href="">About</a>

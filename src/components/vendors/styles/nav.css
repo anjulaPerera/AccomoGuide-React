@@ -79,7 +79,7 @@
   .cta {
     margin-left: 20px;
     padding: 10px 15px 10px 15px;
-    background-color: #86A789;
+    background-color: #436850;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -87,7 +87,7 @@
   }
   
   .cta:hover {
-    background-color:#4F6F52;
+    background-color:#ADBC9F;
   }
   
   /* Mobile Nav */
