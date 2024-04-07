@@ -1,53 +1,90 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { PublicService } from '../../services/PublicService';
 import swal from 'sweetalert';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import { environment } from '../../environment/environment';
 import "../vendors/styles/landlord.css";
+import UserContext from '../../context/UserContext';
+import { useHistory } from 'react-router-dom';
 
 // Define a functional component for editing property
 const EditPropertyForm: React.FC<{
-  property: any;
-  onUpdate: (updatedProperty: any) => void;
+  postId: string;
+
   onCancel: () => void;
-}> = ({ property, onUpdate, onCancel }) => {
-  const [updatedProperty, setUpdatedProperty] = useState<any>({ ...property });
+}> = ({ postId, onCancel }) => {
+    const history = useHistory(); // Use useHistory hook
 
-  // Handle input changes
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setUpdatedProperty({ ...updatedProperty, [name]: value });
-  };
+    const [user] = useContext(UserContext);
+    const [position, setPosition] = useState<{ lat: any; lng: any }>({ lat: 0, lng: 0 });
+    const [refresh, setRefresh] = useState<boolean>(false);
 
-  // Handle form submission
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
+
+useEffect(() => {
+    console.log("postId in edit property", postId);
+},[refresh])
+
+    console.log("postId in edit property", postId);
+  
+    const { isLoaded } = useJsApiLoader({
+      id: 'google-map-script',
+      googleMapsApiKey: environment.GOOGLE_MAP_API_KEY
+    });
+  
+    const handleMarkerDrag = (e: google.maps.MapMouseEvent) => {
+        const latitude = e?.latLng?.lat();
+        const longitude = e?.latLng?.lng();
       
-      await onUpdate(updatedProperty);
-    } catch (error) {
-      console.error('Error updating property:', error);
-    }
-  };
-  const [position, setPosition] = useState<{ lat: any; lng: any }>({ lat: 0, lng: 0 });
+        console.log("Latitude:", latitude);
+        console.log("Longitude:", longitude);
+      
+        setPosition({ lat: latitude, lng: longitude });
+      };
+  
+    const handleUpdatePost = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+  
+      const formData = new FormData(event.currentTarget);
+      console.log("formData::::::", formData);
 
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: environment.GOOGLE_MAP_API_KEY
-  });
-
-  const handleMarkerDrag = (e: google.maps.MapMouseEvent) => {
-    setPosition({ lat: e?.latLng?.lat(), lng: e?.latLng?.lng() });
-    console.log("Latitude:", e?.latLng?.lat());
-    console.log("Longitude:", e?.latLng?.lng());
-  };
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]; // Get the first selected file
-    if (file) {
-      const fileName = `uploads/${file.name}`; // Concatenate with desired path
-      setUpdatedProperty({ ...updatedProperty, imageUrl: fileName });
-    }
-  };
+      console.log("position::::::", position);
+  
+      formData.append("location", JSON.stringify(position));
+  
+      try {
+        const userId: string = user?._id || "";
+        console.log("userId in add property", userId);
+  
+        const res = await PublicService.updateProperty(formData, userId, postId);
+        console.log("res:::::", res);
+  
+        if (res.success) {
+            setRefresh(!refresh)
+          console.log("inside res.success");
+          swal({
+            title: "Property Added Successfully",
+            text: "Your property will be added to the list after warden approval",
+            icon: "success",
+          }).then(() => {
+            history.push("/accomo/landlord/dashboard"); // Use history.push to navigate to another page
+          });
+        } else {
+          swal({
+            title: "Error",
+            text: res.error,
+            icon: "error",
+          });
+          console.log("error======", res.error);
+        }
+      } catch (error) {
+        swal({
+          title: "Error",
+          text: "An error occurred. Please try again later.",
+          icon: "error",
+        });
+        console.log("error++++++", error);
+      }
+    };
   
 
   return (
@@ -56,24 +93,15 @@ const EditPropertyForm: React.FC<{
         <span className="close" onClick={onCancel}>&times;</span>
         <h2>Edit Property</h2>
      
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <form onSubmit={handleUpdatePost} encType="multipart/form-data">
           <label>Title:</label>
-          <input type="text" id="title" name="title" value={updatedProperty.title} onChange={handleInputChange} required></input>
+          <input type="text" id="title" name="title" required></input>
           <label>Description:</label>
-          <textarea id="description" name="description" value={updatedProperty.description} onChange={handleInputChange} required></textarea>
+          <textarea id="description" name="description" required></textarea>
           <label>Upload Image:</label>
-          <input
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-            onChange={handleFileChange}
-            required
-          />
-
-
+          <input type="file" id="image" name="image" accept="image/*" required></input>
           <label>Price:</label>
-          <input type="number" id="price" name="price" min="0" value={updatedProperty.price} onChange={handleInputChange} required></input>
+          <input type="number" id="price" name="price" min="0" required></input>
           <div id="google-map">
             {
               isLoaded ? (
