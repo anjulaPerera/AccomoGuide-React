@@ -88,7 +88,7 @@ const NavBar: React.FC = () => {
             <a href="">About</a>
             </div>
             <div className="contact-btn">
-            <div onClick={AuthService.userLogout}><a href="" className="cta">Logout</a></div>
+            <div onClick={AuthService.userLogout}><a href="" className="cta">Log Out</a></div>
             </div>
           </div>
         </div>

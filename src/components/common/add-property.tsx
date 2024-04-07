@@ -1,17 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../vendors/styles/landlord.css";
 import NavBar from "./NavBar";
-import { AuthService } from "../../services/AuthService";
 import { PublicService } from "../../services/PublicService";
 import UserContext from "../../context/UserContext";
 import swal from "sweetalert";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { environment } from "../../environment/environment";
-
+import { useHistory } from "react-router-dom"; // Import useHistory from react-router-dom
 
 const AddPropertyPage: React.FC = () => {
+  const history = useHistory(); // Use useHistory hook
 
-  const [user] = useContext(UserContext)
+  const [user] = useContext(UserContext);
   const [position, setPosition] = useState<{ lat: any; lng: any }>({ lat: 0, lng: 0 });
 
   const { isLoaded } = useJsApiLoader({
@@ -25,30 +25,29 @@ const AddPropertyPage: React.FC = () => {
     console.log("Longitude:", e?.latLng?.lng());
   };
 
-
- 
-    
   const handleCreatePost = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    
+
     const formData = new FormData(event.currentTarget);
     console.log("formData::::::", formData);
 
     formData.append("location", JSON.stringify(position));
-    
+
     try {
-      const userId:string = user?._id || "";
+      const userId: string = user?._id || "";
       console.log("userId in add property", userId);
-  
+
       const res = await PublicService.createPost(formData, userId);
       console.log("res:::::", res);
-  
+
       if (res.success) {
         console.log("inside res.success");
         swal({
           title: "Property Added Successfully",
           text: "Your property will be added to the list after warden approval",
           icon: "success",
+        }).then(() => {
+          history.push("/accomo/landlord/dashboard"); // Use history.push to navigate to another page
         });
       } else {
         swal({
@@ -67,24 +66,23 @@ const AddPropertyPage: React.FC = () => {
       console.log("error++++++", error);
     }
   };
-  
 
   return (
     <>
-    <NavBar />
-    <div className="container">
+      <NavBar />
+      <div className="container">
         <h1>Add Property</h1>
         <form onSubmit={handleCreatePost} encType="multipart/form-data">
-            <label >Title:</label>
-            <input type="text" id="title" name="title" required></input>
-            <label >Description:</label>
-            <textarea id="description" name="description" required></textarea>
-            <label >Upload Image:</label>
-            <input type="file" id="image" name="image" accept="image/*" required></input>
-            <label >Price:</label>
-            <input type="number" id="price" name="price" min="0" required></input>
-            <div id="google-map">
-          {
+          <label>Title:</label>
+          <input type="text" id="title" name="title" required></input>
+          <label>Description:</label>
+          <textarea id="description" name="description" required></textarea>
+          <label>Upload Image:</label>
+          <input type="file" id="image" name="image" accept="image/*" required></input>
+          <label>Price:</label>
+          <input type="number" id="price" name="price" min="0" required></input>
+          <div id="google-map">
+            {
               isLoaded ? (
                 <GoogleMap
                   id="map"
@@ -100,13 +98,12 @@ const AddPropertyPage: React.FC = () => {
                   />
                 </GoogleMap>
               ) : <></>
-          }
-            </div>
+            }
+          </div>
 
-            <button type="submit">Add Property</button>
+          <button type="submit">Add Property</button>
         </form>
-    </div>
-
+      </div>
     </>
   );
 };
